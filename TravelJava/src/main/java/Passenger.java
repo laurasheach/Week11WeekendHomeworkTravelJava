@@ -12,4 +12,8 @@ public class Passenger {
         return this.name;
     }
 
+    public int getNoOfBags(){
+        return this.luggage;
+    }
+
 }
