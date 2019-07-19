@@ -19,10 +19,10 @@ public class FlightTest {
     public void setup(){
         flight = new Flight(PlaneType.AIRBUSA380, FlightNoType.BA123, DestinationType.SFO, DepartureType.GLA, "10:00AM");
         passenger1 = new Passenger("Laura", 1);
-        passenger2 = new Passenger("Hazel", 2);
+        passenger2 = new Passenger("Hazel", 1);
         passenger3 = new Passenger("Bob", 1);
         passenger4 = new Passenger("Alice", 1);
-        passenger5 = new Passenger("Anne", 2);
+        passenger5 = new Passenger("Anne", 1);
         passenger6 = new Passenger("Alastair", 1);
     }
 
