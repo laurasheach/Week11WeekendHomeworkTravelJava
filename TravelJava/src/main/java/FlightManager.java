@@ -6,6 +6,10 @@ public class FlightManager {
         return weightAvailable;
     }
 
-    
+    public static int getWeightOfLuggageOnFlight(Flight flight){
+        int totalPassengers = flight.getPassengerNumbers();
+        int baggageAllowancePerPassenger = getWeightReservedForLuggage() / PlaneType.AIRBUSA380.getCapacity();
+        return totalPassengers * baggageAllowancePerPassenger;
+    }
 
 }
