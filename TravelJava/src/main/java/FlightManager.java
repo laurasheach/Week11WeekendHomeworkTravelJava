@@ -12,4 +12,11 @@ public class FlightManager {
         return totalPassengers * baggageAllowancePerPassenger;
     }
 
+    public static int getRemaingWeightAvailable(Flight flight){
+        int weightOfLuggage = getWeightOfLuggageOnFlight(flight);
+        int totalWeightAvailable = getWeightReservedForLuggage();
+        return totalWeightAvailable - weightOfLuggage;
+
+    }
+
 }

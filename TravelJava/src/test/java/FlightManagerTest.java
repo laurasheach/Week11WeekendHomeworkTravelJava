@@ -41,4 +41,12 @@ public class FlightManagerTest {
         assertEquals(150, flightManager.getWeightOfLuggageOnFlight(flight));
     }
 
+    @Test
+    public void canGetRemaingWeightAvailable(){
+        flight.bookPassengerIfSeatsAvailable(passenger1);
+        flight.bookPassengerIfSeatsAvailable(passenger2);
+        flight.bookPassengerIfSeatsAvailable(passenger3);
+        assertEquals(100, flightManager.getRemaingWeightAvailable(flight));
+    }
+
 }
