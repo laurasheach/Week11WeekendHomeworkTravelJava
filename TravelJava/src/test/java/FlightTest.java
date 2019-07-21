@@ -3,6 +3,8 @@ import org.junit.Test;
 
 import javax.print.attribute.standard.Destination;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
@@ -14,10 +16,12 @@ public class FlightTest {
     Passenger passenger4;
     Passenger passenger5;
     Passenger passenger6;
+    Date date;
 
     @Before
     public void setup(){
-        flight = new Flight(PlaneType.AIRBUSA380, FlightNoType.BA123, DestinationType.SFO, DepartureType.GLA, "10:00AM");
+        date = new Date();
+        flight = new Flight(PlaneType.AIRBUSA380, FlightNoType.BA123, DestinationType.SFO, DepartureType.GLA, date);
         passenger1 = new Passenger("Laura", 1);
         passenger2 = new Passenger("Hazel", 1);
         passenger3 = new Passenger("Bob", 1);
@@ -53,7 +57,7 @@ public class FlightTest {
 
     @Test
     public void canCheckDepartureTime(){
-        assertEquals("10:00AM", flight.getDepartureTime());
+        assertEquals(new Date(), flight.getDepartureTime());
     }
 
     @Test
@@ -91,5 +95,26 @@ public class FlightTest {
         flight.addPassengerToFlight(passenger5);
         flight.bookPassengerIfSeatsAvailable(passenger6);
         assertEquals(5, flight.getPassengerNumbers());
+    }
+
+    @Test
+    public void canCheckSeatListStartsAt0(){
+        assertEquals(0, flight.getSeatNumbers());
+    }
+
+    @Test
+    public void canPopulateSeatArray(){
+        flight.addSeatsToFlight();
+        flight.shuffle();
+        assertEquals(5, flight.getSeatNumbers());
+    }
+
+    @Test
+    public void canRemoveSeatWhenBooked(){
+        flight.bookPassengerIfSeatsAvailable(passenger1);
+        flight.addSeatsToFlight();
+        flight.shuffle();
+        flight.removeSeatWhenBooked();
+        assertEquals(4, flight.getSeatNumbers());
     }
 }
